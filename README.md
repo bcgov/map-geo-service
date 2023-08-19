@@ -59,6 +59,6 @@ for k,v in vars:
 
 Store the information in `Vault` (for reference) and in `Github` (for deployment):
 
-1. Vault: Login at https://vault.developer.gov.bc.ca and go to `af9df1-nonprod/CONFIG` for `dev` and `test` (`af9df1-prod/CONFIG` for `prod`) and update with the above config.
+1. Vault: Login at https://vault.developer.gov.bc.ca and go to `264e6f-nonprod/CONFIG` for `dev` and `test` (`264e6f-prod/CONFIG` for `prod`) and update with the above config.
 
-2. Github: Go to https://github.com/bcgov/bcstats-callweb/settings/environments and add an Environment Secret `CONFIG` with the above config.
+2. Github: Go to https://github.com/bcgov/map-geo-service/settings/environments and add an Environment Secret `CONFIG` with the above config.
