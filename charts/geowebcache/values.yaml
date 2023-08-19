@@ -39,6 +39,8 @@ gwc:
   persistence:
     catalina:
       mountPath: /usr/local/tomcat/conf/Catalina/localhost
+    cache:
+      mountPath: /geowebcache/cache
     logs:
       mountPath: /usr/local/tomcat/logs
 
