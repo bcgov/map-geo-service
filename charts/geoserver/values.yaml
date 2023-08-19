@@ -35,8 +35,8 @@ geoserver:
   config: []
 
   persistence:
-    logs:
-      mountPath: /etc/httpd/logs
+    geoserver_data:
+      mountPath: /opt/geoserver_data
 
   nameOverride: map-geoserver
 
