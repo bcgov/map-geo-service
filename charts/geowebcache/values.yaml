@@ -35,8 +35,10 @@ gwc:
   config: []
 
   persistence:
+    catalina:
+      mountPath: /usr/local/tomcat/conf/Catalina/localhost
     logs:
-      mountPath: /etc/httpd/logs
+      mountPath: /usr/local/tomcat/logs
 
   nameOverride: map-geowebcache
 
