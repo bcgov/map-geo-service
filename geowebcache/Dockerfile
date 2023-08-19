@@ -1,6 +1,6 @@
 FROM tomcat:9-jdk11-corretto AS BUILD
 
-RUN yum install -y unzip
+RUN yum install -y unzip gettext
 
 RUN mkdir /usr/local/tomcat/webapps/gwc 
 WORKDIR /usr/local/tomcat/webapps/gwc
