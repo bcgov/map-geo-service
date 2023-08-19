@@ -16,7 +16,7 @@ gwc:
       memory: 100Mi
 
   image:
-    repository: artifacts.developer.gov.bc.ca/a264-docker/geowebcache
+    repository: artifacts.developer.gov.bc.ca/a264-docker/map-geowebcache
     pullPolicy: Always
     tag: dev
 
@@ -38,7 +38,7 @@ gwc:
     logs:
       mountPath: /etc/httpd/logs
 
-  nameOverride: geowebcache
+  nameOverride: map-geowebcache
 
   extraLabels:
     role: geowebcache

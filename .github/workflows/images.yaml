@@ -3,6 +3,8 @@ name: Release Image
 on:
   push:
     branches: [dev, image/*]
+    paths:
+      - geowebcache/**
 
 env:
   REGISTRY: artifacts.developer.gov.bc.ca
@@ -35,9 +37,6 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      # - name: Set up QEMU
-      #   uses: docker/setup-qemu-action@v2
-
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2
@@ -46,10 +45,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          # list of Docker images to use as base name for tags
           images: |
             ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geowebcache
-          # generate Docker tags based on the following events/attributes
           tags: |
             type=schedule
             type=ref,event=branch
