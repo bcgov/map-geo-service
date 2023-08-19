@@ -1,0 +1,5 @@
+Chart.lock
+charts/**/charts
+charts/aps-gateway
+.env*
+*.tgz

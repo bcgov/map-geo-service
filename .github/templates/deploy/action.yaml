@@ -1,0 +1,67 @@
+name: deploy
+
+# Were we can define the inputs that our action will accept
+inputs:
+  openshift_server:
+    required: true
+  openshift_token:
+    required: true
+  environment:
+    required: true
+  env_vars:
+    required: true
+  ocp_license_plate:
+    required: true
+  tag_name:
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+
+    - name: Install oc
+      uses: redhat-actions/oc-installer@v1
+      with:
+        oc_version: "4.6"
+
+    - name: "Get Helm"
+      shell: bash
+      run: |
+        curl -L -O https://get.helm.sh/helm-v3.11.1-linux-amd64.tar.gz
+        tar -xf helm-*-linux-amd64.tar.gz
+        export PATH=$PATH:`pwd`/linux-amd64
+
+    - name: Authenticate to silver and set context
+      uses: redhat-actions/oc-login@v1
+      with:
+        openshift_server_url: ${{ inputs.openshift_server }}
+        openshift_token: ${{ inputs.openshift_token }}
+
+        # Disables SSL cert checking. Use this if you don't have the certificate authority data.
+        insecure_skip_tls_verify: true
+
+        namespace: ${{ inputs.ocp_license_plate }}-${{ inputs.environment }}
+
+    - name: Report
+      shell: bash
+      run: |
+        (echo '<pre>'; helm version; echo '</pre>') >> $GITHUB_STEP_SUMMARY
+        (echo '<pre>'; helm list; echo '</pre>') >> $GITHUB_STEP_SUMMARY
+
+    - name: "Deploy Solution"
+      shell: bash
+      run: |
+        echo "${{ inputs.env_vars }}" > .env
+        set -a && . ./.env && set +a
+        cat env.template.yaml | envsubst > .env.yaml
+
+        HELM_ARGS="-n ${{ inputs.ocp_license_plate }}-${{ inputs.environment }} --history-max 2 -f .env.yaml"
+
+    - name: Post Upgrade Summary
+      shell: bash
+      run: |
+        echo "### Post Upgrade Summary" >> $GITHUB_STEP_SUMMARY
+        (echo '<pre>'; helm list -n ${{ inputs.ocp_license_plate }}-${{ inputs.environment }}; echo '</pre>') >> $GITHUB_STEP_SUMMARY
+
+        (echo '<pre>'; oc get pods -n ${{ inputs.ocp_license_plate }}-${{ inputs.environment }}; echo '</pre>') >> $GITHUB_STEP_SUMMARY

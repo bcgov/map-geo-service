@@ -1,0 +1,56 @@
+name: Continuous Delivery
+# run-name: CD Release ${{ github.action }} ${{ github.job }} ${{ github.action_status }}
+
+on:
+  push:
+    branches: [dev]
+
+  workflow_dispatch:
+    inputs:
+      commit_note:
+        description: "Commit note"
+        required: false
+        default: ""
+
+  workflow_call:
+    secrets:
+      OPENSHIFT_SERVER:
+        required: true
+      OPENSHIFT_TOKEN:
+        required: true
+      CONFIG:
+        required: true
+
+jobs:
+  release-on-push:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - id: release
+        uses: rymndhng/release-on-push-action@master
+        with:
+          bump_version_scheme: minor
+    outputs:
+      version_number: ${{ steps.release.outputs.tag_name }}
+
+  deploy-dev:
+    name: deploy to dev
+    runs-on: ubuntu-latest
+    environment: "dev"
+    needs: release-on-push
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+
+      - name: Deploy to Dev
+        uses: "./.github/templates/deploy"
+        with:
+          openshift_server: ${{ secrets.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          environment: dev
+          env_vars: ${{ secrets.CONFIG }}
+          ocp_license_plate: ${{ secrets.OCP_LICENSE_PLATE }}
+          tag_name: ${{needs.release-on-push.outputs.version_number}}
