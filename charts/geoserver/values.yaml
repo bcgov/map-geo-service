@@ -1,0 +1,44 @@
+geoserver:
+  enabled: true
+
+  replicaCount: 1
+
+  rollingUpdate:
+    maxUnavailable: 100%
+    maxSurge: 0%
+
+  resources:
+    limits:
+      cpu: 200m
+      memory: 500Mi
+    requests:
+      cpu: 50m
+      memory: 100Mi
+
+  image:
+    repository: artifacts.developer.gov.bc.ca/a264-docker/map-geoserver
+    pullPolicy: Always
+    tag: dev
+
+  imagePullSecrets:
+    - name: artifactory-pull
+
+  containerPort: 8080
+
+  service:
+    port: 80
+
+  env:
+    INFO:
+      value: BOTH
+
+  config: []
+
+  persistence:
+    logs:
+      mountPath: /etc/httpd/logs
+
+  nameOverride: map-geoserver
+
+  extraLabels:
+    role: geoserver

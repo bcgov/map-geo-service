@@ -1,0 +1,16 @@
+apiVersion: v2
+name: geoserver
+description: A Helm chart for deploying GeoServer solution
+
+type: application
+
+version: 0.2.8
+
+appVersion: 1.0.0
+
+dependencies:
+  - name: generic-api
+    version: 0.2.8
+    repository: https://bcgov.github.io/helm-charts
+    condition: geoserver.enabled
+    alias: geoserver

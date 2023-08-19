@@ -66,6 +66,14 @@ runs:
           $HELM_ARGS \
          geowebcache-*.tgz
 
+         helm dependency build charts/geoserver
+         helm package --app-version=${{ inputs.tag_name }} ./charts/geoserver
+         helm upgrade --install map-geoserver-${{ inputs.environment }} \
+           -f ./charts/geoserver/values.yaml \
+           -f ./charts/geoserver/values.${{ inputs.environment }}.yaml \
+           $HELM_ARGS \
+          geoserver-*.tgz
+
     - name: Post Upgrade Summary
       shell: bash
       run: |
