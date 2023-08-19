@@ -37,7 +37,7 @@
   <bean id="gwcWMSConfig" class="org.geowebcache.config.GetCapabilitiesConfiguration">
   	<constructor-arg ref="gwcGridSetBroker">
     </constructor-arg>
-    <constructor-arg value="##wms_base_url##?service=WMS&amp;request=GetCapabilities&amp;VERSION=1.1.1">
+    <constructor-arg value="${WMS_BASE_URL}?service=WMS&amp;request=GetCapabilities&amp;VERSION=1.1.1">
       <description>The URL to the WMS GetCapabilities document, notice &amp; , port is normally 8080</description>
     </constructor-arg>
     <constructor-arg value="image/png">
