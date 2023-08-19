@@ -60,7 +60,7 @@ runs:
 
         helm dependency build charts/geowebcache
         helm package --app-version=${{ inputs.tag_name }} ./charts/geowebcache
-        helm upgrade --install geowebcache-${{ inputs.environment }} \
+        helm upgrade --install map-geowebcache-${{ inputs.environment }} \
           -f ./charts/geowebcache/values.yaml \
           -f ./charts/geowebcache/values.${{ inputs.environment }}.yaml \
           $HELM_ARGS \
