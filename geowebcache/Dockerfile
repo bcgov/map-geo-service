@@ -27,4 +27,6 @@ COPY entrypoint.sh /
 ENV GWC_DISKQUOTA_DISABLED=true
 ENV GEOWEBCACHE_CACHE_DIR=/geowebcache/cache
 
+RUN chmod -R 777 /usr/local/tomcat/webapps/gwc/WEB-INF
+
 ENTRYPOINT [ "/entrypoint.sh" ]
