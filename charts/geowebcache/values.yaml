@@ -16,12 +16,13 @@ gwc:
       memory: 100Mi
 
   image:
-    repository: artifacts.developer.gov.bc.ca/a264-docker/map-geowebcache
+    repository: ghcr.io/bcgov/map-geo-service/map-geowebcache
+    #repository: artifacts.developer.gov.bc.ca/a264-docker/map-geowebcache
     pullPolicy: Always
     tag: dev
 
   imagePullSecrets:
-    - name: artifactory-pull
+    - name: dev-github-read-packages-creds
 
   containerPort: 8080
 
