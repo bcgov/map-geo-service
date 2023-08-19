@@ -16,6 +16,8 @@ Go to https://github.com/bcgov/map-geo-services/settings/environments to configu
 | OPENSHIFT_TOKEN  | Permission to manage resources in project `264e6f` |
 | CONFIG           | All your secure environment-specific variables     |
 
+> Can use the credentials found in `pipeline-token-*` secret for the service account `pipeline`.
+
 **Set Github Environment Specific Secrets**
 
 | Secret            | Source       |
