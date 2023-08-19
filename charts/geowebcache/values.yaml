@@ -9,11 +9,11 @@ gwc:
 
   resources:
     limits:
-      cpu: 200m
+      cpu: 800m
       memory: 1024Mi
     requests:
-      cpu: 50m
-      memory: 100Mi
+      cpu: 100m
+      memory: 512Mi
 
   image:
     repository: ghcr.io/bcgov/map-geo-service/map-geowebcache
@@ -33,7 +33,7 @@ gwc:
     JAVA_OPTS:
       value: "-Xms512m -Xmx1024m"
     WMS_BASE_URL:
-      value: "https://openmaps.gov.bc.ca"
+      value: "https://openmaps.gov.bc.ca/geo/pub/ows"
 
   config: []
 
