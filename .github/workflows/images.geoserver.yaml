@@ -5,7 +5,7 @@ on:
     branches: [dev, image/*]
     paths:
       - geoserver/**
-      - .github/workflows/images.yaml
+      - .github/workflows/images.geoserver.yaml
 
 env:
   REGISTRY: artifacts.developer.gov.bc.ca
