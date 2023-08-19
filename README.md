@@ -10,19 +10,19 @@ Go to https://github.com/bcgov/map-geo-services/settings/environments to configu
 
 **Set Github Secrets**
 
-| Secret           | Source                                             |
-| ---------------- | -------------------------------------------------- |
-| OPENSHIFT_SERVER | `https://api.silver.devops.gov.bc.ca:6443`         |
-| OPENSHIFT_TOKEN  | Permission to manage resources in project `264e6f` |
-| CONFIG           | All your secure environment-specific variables     |
+| Secret            | Source                                             |
+| ----------------- | -------------------------------------------------- |
+| OPENSHIFT_SERVER  | `https://api.silver.devops.gov.bc.ca:6443`         |
+| OPENSHIFT_TOKEN   | Permission to manage resources in project `264e6f` |
+| OCP_LICENSE_PLATE | `264e6f`                                           |
+| CONFIG            | All your secure environment-specific variables     |
 
 > Can use the credentials found in `pipeline-token-*` secret for the service account `pipeline`.
 
 **Set Github Environment Specific Secrets**
 
-| Secret            | Source       |
-| ----------------- | ------------ |
-| OCP_LICENSE_PLATE | `264e6f-dev` |
+| Secret | Source |
+| ------ | ------ |
 
 ### Artifactory
 
