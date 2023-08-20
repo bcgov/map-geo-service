@@ -58,6 +58,13 @@ runs:
 
         HELM_ARGS="-n ${{ inputs.ocp_license_plate }}-${{ inputs.environment }} --history-max 2 -f .env.yaml"
 
+        helm dependency build charts/minio
+        helm package --app-version=${{ inputs.tag_name }} ./charts/minio
+        helm upgrade --install minio-${{ inputs.environment }} \
+          -f ./charts/minio/values.${{ inputs.environment }}.yaml \
+          $HELM_ARGS \
+          minio-*.tgz
+
         helm dependency build charts/geowebcache
         helm package --app-version=${{ inputs.tag_name }} ./charts/geowebcache
         helm upgrade --install map-geowebcache-${{ inputs.environment }} \
