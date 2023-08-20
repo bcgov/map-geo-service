@@ -1,0 +1,13 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: map-geowebcache-shared-cache
+  namespace: 264e6f-prod
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: netapp-file-standard
+  volumeMode: Filesystem
