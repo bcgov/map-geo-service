@@ -34,26 +34,26 @@ jobs:
     outputs:
       version_number: ${{ steps.release.outputs.tag_name }}
 
-  # deploy-dev:
-  #   name: deploy to dev
-  #   runs-on: ubuntu-latest
-  #   environment: "dev"
-  #   needs: release-on-push
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
-  #       with:
-  #         ref: ${{ github.event.workflow_run.head_branch }}
+  deploy-dev:
+    name: deploy to dev
+    runs-on: ubuntu-latest
+    environment: "dev"
+    needs: release-on-push
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
 
-  #     - name: Deploy to Dev
-  #       uses: "./.github/templates/deploy"
-  #       with:
-  #         openshift_server: ${{ secrets.OPENSHIFT_SERVER }}
-  #         openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-  #         environment: dev
-  #         env_vars: ${{ secrets.CONFIG }}
-  #         ocp_license_plate: ${{ secrets.OCP_LICENSE_PLATE }}
-  #         tag_name: ${{needs.release-on-push.outputs.version_number}}
+      - name: Deploy to Dev
+        uses: "./.github/templates/deploy"
+        with:
+          openshift_server: ${{ secrets.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          environment: dev
+          env_vars: ${{ secrets.CONFIG }}
+          ocp_license_plate: ${{ secrets.OCP_LICENSE_PLATE }}
+          tag_name: ${{needs.release-on-push.outputs.version_number}}
 
   deploy-prod:
     name: deploy to prod

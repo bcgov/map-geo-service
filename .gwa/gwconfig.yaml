@@ -21,14 +21,14 @@ services:
         request_buffering: true
         response_buffering: true
 
-  - name: map-geoserver-imai-dev
+  - name: map-geoserver-imai
     host: openmaps.gov.bc.ca
     tags: [ns.dss-map-geo]
     port: 443
     protocol: https
     retries: 0
     routes:
-      - name: map-geoserver-imai-dev
+      - name: map-geoserver-imai
         tags: [ns.dss-map-geo]
         hosts:
           - map-geoserver-imai.api.gov.bc.ca
