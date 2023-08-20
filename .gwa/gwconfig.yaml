@@ -1,0 +1,42 @@
+services:
+  - name: map-geo-geowebcache-dev
+    host: map-geowebcache-dev.264e6f-dev.svc
+    tags: [ns.dss-map-geo]
+    port: 80
+    protocol: http
+    retries: 0
+    routes:
+      - name: map-geo-geowebcache-dev
+        tags: [ns.dss-map-geo]
+        hosts:
+          - map-gwc.dev.api.gov.bc.ca
+        paths:
+          - /
+        methods:
+          - GET
+        strip_path: false
+        https_redirect_status_code: 426
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true
+
+  - name: map-geoserver-imai-dev
+    host: openmaps.gov.bc.ca
+    tags: [ns.dss-map-geo]
+    port: 443
+    protocol: https
+    retries: 0
+    routes:
+      - name: map-geoserver-imai-dev
+        tags: [ns.dss-map-geo]
+        hosts:
+          - map-geoserver-imai.api.gov.bc.ca
+        paths:
+          - /
+        methods:
+          - GET
+        strip_path: false
+        https_redirect_status_code: 426
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true

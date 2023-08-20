@@ -3,3 +3,4 @@ charts/**/charts
 charts/aps-gateway
 .env*
 *.tgz
+gwa

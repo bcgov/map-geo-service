@@ -1,0 +1,17 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-traffic-from-kong-to-dev
+  namespace: 264e6f-dev
+spec:
+  podSelector:
+    matchLabels:
+      role: geowebcache
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              environment: prod
+              name: 264e6f
+  policyTypes:
+    - Ingress

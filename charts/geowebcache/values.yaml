@@ -33,7 +33,7 @@ gwc:
     JAVA_OPTS:
       value: "-Xms512m -Xmx1024m"
     WMS_BASE_URL:
-      value: "https://openmaps.gov.bc.ca/geo/pub/ows"
+      value: "https://map-geoserver-imai.api.gov.bc.ca/geo/pub/ows"
 
   config: []
 
