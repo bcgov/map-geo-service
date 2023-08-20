@@ -58,6 +58,19 @@ services:
           add:
             headers:
               - "X-Geo-Cache-Source: ocp"
+      - name: rate-limiting
+        tags: [ns.dss-map-geo]
+        config:
+          fault_tolerant: true
+          hide_client_headers: false
+          policy: redis
+          limit_by: service
+          minute: null
+          second: 300
+          hour: null
+          day: null
+          month: null
+          year: null
     routes:
       - name: map-geo-geowebcache-prod
         tags: [ns.dss-map-geo]

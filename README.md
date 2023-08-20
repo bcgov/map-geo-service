@@ -83,6 +83,8 @@ Available: 16 CPU, 58Gb Memory
 | 800m | 2Gb    | 3 (75 users) | 60 r/s (with shared PVC)   |          |             |
 | 800m | 2Gb    | 32           | 512 r/s                    | 16 CPU   | 64Gb        |
 
+> HPA is set at 25, which means total r/s that this setup can handle is about 300 req/sec.
+
 ## Object Storage
 
 ```
