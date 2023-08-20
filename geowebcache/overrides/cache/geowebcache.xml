@@ -163,10 +163,10 @@
         </gridSubset>
       </gridSubsets>
       <expireCacheList>
-        <expirationRule minZoom="0" expiration="300" />
+        <expirationRule minZoom="0" expiration="3600" />
       </expireCacheList>
       <expireClientsList>
-        <expirationRule minZoom="0" expiration="500" />
+        <expirationRule minZoom="0" expiration="3600" />
       </expireClientsList>
       <parameterFilters>
         <!-- <regexParameterFilter>

@@ -1,3 +1,15 @@
 gwc:
+  replicaCount: 2
+
+  rollingUpdate:
+    maxUnavailable: 0
+    maxSurge: 1
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 20
+    targetCPUUtilizationPercentage: 60
+
   imagePullSecrets:
     - name: prod-github-read-packages-creds
