@@ -15,7 +15,7 @@ gwc:
   resources:
     limits:
       cpu: 800m
-      memory: 1024Mi
+      memory: 2Gi
     requests:
       cpu: 100m
       memory: 512Mi

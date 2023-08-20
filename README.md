@@ -64,3 +64,24 @@ Store the information in `Vault` (for reference) and in `Github` (for deployment
 1. Vault: Login at https://vault.developer.gov.bc.ca and go to `264e6f-nonprod/CONFIG` for `dev` and `test` (`264e6f-prod/CONFIG` for `prod`) and update with the above config.
 
 2. Github: Go to https://github.com/bcgov/map-geo-service/settings/environments and add an Environment Secret `CONFIG` with the above config.
+
+## Scaling
+
+Baseline: CPU: 800m, Memory: 2Gb
+
+Available: 16 CPU, 58Gb Memory
+
+| CPU  | Memory | Multiplier   | Est. Req/Sec | Est. CPU | Est. Memory |
+| ---- | ------ | ------------ | ------------ | -------- | ----------- |
+| 800m | 2Gb    | 1 (20 users) | 16 r/s       | 800m     | 2Gb         |
+| 800m | 2Gb    | 32           | 512 r/s      | 16 CPU   | 64Gb        |
+
+## Runtime Troubleshooting
+
+### Flush Cache
+
+```
+curl -v -u geowebcache:secured -X POST -H "Content-type: text/xml" \
+  -d "<truncateLayer><layerName>pub:WHSE_HUMAN_CULTURAL_ECONOMIC.EMRG_ORDER_AND_ALERT_AREAS_SP</layerName></truncateLayer>" \
+  https://map-gwc.dev.api.gov.bc.ca/gwc/rest/masstruncate
+```
