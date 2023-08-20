@@ -41,3 +41,28 @@ services:
         path_handling: v0
         request_buffering: true
         response_buffering: true
+
+  - name: map-geo-geowebcache-prod
+    host: map-geowebcache-prod.264e6f-prod.svc
+    tags: [ns.dss-map-geo]
+    port: 80
+    protocol: http
+    retries: 0
+    connect_timeout: 5000
+    read_timeout: 5000
+    write_timeout: 5000
+    routes:
+      - name: map-geo-geowebcache-prod
+        tags: [ns.dss-map-geo]
+        hosts:
+          - map-gwc.api.gov.bc.ca
+        paths:
+          - /
+        methods:
+          - GET
+          - POST
+        strip_path: false
+        https_redirect_status_code: 426
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true
