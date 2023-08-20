@@ -4,3 +4,4 @@ charts/aps-gateway
 .env*
 *.tgz
 gwa
+LOCAL.md

@@ -21,8 +21,12 @@ Go to https://github.com/bcgov/map-geo-services/settings/environments to configu
 
 **Set Github Environment Specific Secrets**
 
-| Secret | Source |
-| ------ | ------ |
+| Secret          | Source                                    |
+| --------------- | ----------------------------------------- |
+| S3_ENDPOINT     | https://bc-data-obj.objectstore.gov.bc.ca |
+| S3_CACHE_BUCKET | Example: data_map_geowebcache_dev_bkt     |
+| S3_ACCESS_KEY   | Example: data_map_geowebcache_dev_usr     |
+| S3_SECRET_KEY   |                                           |
 
 ### Artifactory
 
@@ -71,10 +75,20 @@ Baseline: CPU: 800m, Memory: 2Gb
 
 Available: 16 CPU, 58Gb Memory
 
-| CPU  | Memory | Multiplier   | Est. Req/Sec | Est. CPU | Est. Memory |
-| ---- | ------ | ------------ | ------------ | -------- | ----------- |
-| 800m | 2Gb    | 1 (20 users) | 16 r/s       | 800m     | 2Gb         |
-| 800m | 2Gb    | 32           | 512 r/s      | 16 CPU   | 64Gb        |
+| CPU  | Memory | Multiplier   | Est. Req/Sec               | Est. CPU | Est. Memory |
+| ---- | ------ | ------------ | -------------------------- | -------- | ----------- |
+| 800m | 2Gb    | 1 (20 users) | 16 r/s                     | 800m     | 2Gb         |
+| 800m | 2Gb    | 3 (75 users) | 60 r/s                     |          |             |
+| 800m | 2Gb    | 3 (75 users) | 35 r/s (with S3 blobstore) |          |             |
+| 800m | 2Gb    | 32           | 512 r/s                    | 16 CPU   | 64Gb        |
+
+## Object Storage
+
+```
+https://bc-data-obj.objectstore.gov.bc.ca
+data_map_geowebcache_dev_bkt
+data_map_geowebcache_dev_usr
+```
 
 ## Runtime Troubleshooting
 
@@ -84,4 +98,9 @@ Available: 16 CPU, 58Gb Memory
 curl -v -u geowebcache:secured -X POST -H "Content-type: text/xml" \
   -d "<truncateLayer><layerName>pub:WHSE_HUMAN_CULTURAL_ECONOMIC.EMRG_ORDER_AND_ALERT_AREAS_SP</layerName></truncateLayer>" \
   https://map-gwc.dev.api.gov.bc.ca/gwc/rest/masstruncate
+```
+
+```
+curl -v -u geowebcache:secured -X POST -H "Content-type: text/xml" \
+  "https://map-gwc.dev.api.gov.bc.ca/gwc/rest/seed/pub:WHSE_HUMAN_CULTURAL_ECONOMIC.EMRG_ORDER_AND_ALERT_AREAS_SP"
 ```
