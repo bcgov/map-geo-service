@@ -42,10 +42,10 @@ gwc:
       mountPath: /usr/local/tomcat/conf/Catalina/localhost
     cache:
       mountPath: /geowebcache/cache
-      claimName: externally-created-pvc-claim
-      size: 1Gi
-      storageClassName: netapp-block-standard
-      storageAccessMode: ReadWriteOnce
+      # claimName: externally-created-pvc-claim
+      # size: 1Gi
+      # storageClassName: netapp-block-standard
+      # storageAccessMode: ReadWriteOnce
 
     logs:
       mountPath: /usr/local/tomcat/logs
