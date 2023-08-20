@@ -21,6 +21,7 @@ RUN cp -r /usr/local/tomcat/webapps.dist/manager /usr/local/tomcat/webapps/manag
 COPY overrides /overrides/.
 
 COPY /overrides/conf/tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
+COPY /overrides/conf/server.xml /usr/local/tomcat/conf/server.xml
 
 COPY /overrides/webapps/manager/META-INF/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
 
