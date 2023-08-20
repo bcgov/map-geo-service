@@ -61,16 +61,17 @@
     </SwiftBlobStore> -->
 
     <!-- A sample AWS S3 blob store configuration.   -->
-    <!-- 
-    <S3BlobStore>
-      <id>myS3Cache</id>
-      <enabled>false</enabled>
-      <bucket>put-your-actual-bucket-name-here</bucket>
-      <prefix>test-cache</prefix>
-      <awsAccessKey>putYourActualAccessKeyHere</awsAccessKey>
-      <awsSecretKey>putYourActualSecretKeyHere</awsSecretKey>
+
+    <S3BlobStore default="true">
+      <id>s3Cache</id>
+      <enabled>true</enabled>
+      <bucket>${S3_CACHE_BUCKET}</bucket>
+      <prefix>cache</prefix>
+      <awsAccessKey>${S3_ACCESS_KEY}</awsAccessKey>
+      <awsSecretKey>${S3_SECRET_KEY}</awsSecretKey>
       <maxConnections>50</maxConnections>
       <useHTTPS>true</useHTTPS>
+      <endpoint>${S3_ENDPOINT}</endpoint>
       <proxyDomain></proxyDomain>
       <proxyWorkstation></proxyWorkstation>
       <proxyHost></proxyHost>
@@ -79,7 +80,7 @@
       <proxyPassword></proxyPassword>
       <useGzip>true</useGzip>
     </S3BlobStore>
-     -->
+
     <!-- A sample MBTiles blob store configuration.   -->
     <!--
     <MbtilesBlobStore default="true">
