@@ -51,6 +51,13 @@ services:
     connect_timeout: 5000
     read_timeout: 5000
     write_timeout: 5000
+    plugins:
+      - name: response-transformer
+        tags: [ns.dss-map-geo]
+        config:
+          add:
+            headers:
+              - "X-Geo-Cache-Source: ocp"
     routes:
       - name: map-geo-geowebcache-prod
         tags: [ns.dss-map-geo]
