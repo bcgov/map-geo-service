@@ -62,7 +62,7 @@
 
     <!-- A sample AWS S3 blob store configuration.   -->
 
-    <S3BlobStore default="true">
+    <!-- <S3BlobStore default="true">
       <id>s3Cache</id>
       <enabled>true</enabled>
       <bucket>${S3_CACHE_BUCKET}</bucket>
@@ -79,7 +79,7 @@
       <proxyUsername></proxyUsername>
       <proxyPassword></proxyPassword>
       <useGzip>true</useGzip>
-    </S3BlobStore>
+    </S3BlobStore> -->
 
     <!-- A sample MBTiles blob store configuration.   -->
     <!--
