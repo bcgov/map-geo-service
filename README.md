@@ -80,6 +80,7 @@ Available: 16 CPU, 58Gb Memory
 | 800m | 2Gb    | 1 (20 users) | 16 r/s                     | 800m     | 2Gb         |
 | 800m | 2Gb    | 3 (75 users) | 60 r/s                     |          |             |
 | 800m | 2Gb    | 3 (75 users) | 35 r/s (with S3 blobstore) |          |             |
+| 800m | 2Gb    | 3 (75 users) | 60 r/s (with shared PVC)   |          |             |
 | 800m | 2Gb    | 32           | 512 r/s                    | 16 CPU   | 64Gb        |
 
 ## Object Storage

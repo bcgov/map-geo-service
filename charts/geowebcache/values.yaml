@@ -11,6 +11,9 @@ gwc:
     httpGet:
       path: /gwc
       port: http
+    initialDelaySeconds: 15
+    periodSeconds: 15
+    timeoutSeconds: 5
 
   resources:
     limits:
