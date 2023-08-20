@@ -59,6 +59,7 @@ gwc:
       mountPath: /usr/local/tomcat/conf/Catalina/localhost
     cache:
       mountPath: /geowebcache/cache
+      claimName: geowebcache-shared-cache
       # claimName: externally-created-pvc-claim
       # size: 1Gi
       # storageClassName: netapp-block-standard
