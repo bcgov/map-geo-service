@@ -36,7 +36,7 @@ gwc:
 
   env:
     JAVA_OPTS:
-      value: "-Xms512m -Xmx1024m"
+      value: "-Xms1024m -Xmx2048m"
     WMS_BASE_URL:
       value: "https://map-geoserver-imai.api.gov.bc.ca/geo/pub/ows"
     S3_ENDPOINT:
