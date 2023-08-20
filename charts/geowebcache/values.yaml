@@ -39,6 +39,18 @@ gwc:
       value: "-Xms512m -Xmx1024m"
     WMS_BASE_URL:
       value: "https://map-geoserver-imai.api.gov.bc.ca/geo/pub/ows"
+    S3_ENDPOINT:
+      value: "TO_BE_SET"
+      secure: true
+    S3_CACHE_BUCKET:
+      value: "TO_BE_SET"
+      secure: true
+    S3_ACCESS_KEY:
+      value: "TO_BE_SET"
+      secure: true
+    S3_SECRET_KEY:
+      value: "TO_BE_SET"
+      secure: true
 
   config: []
 
