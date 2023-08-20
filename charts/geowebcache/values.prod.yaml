@@ -1,12 +1,12 @@
 gwc:
-  replicaCount: 2
+  replicaCount: 20
 
   rollingUpdate:
     maxUnavailable: 0
     maxSurge: 1
 
   autoscaling:
-    enabled: true
+    enabled: false
     minReplicas: 5
     maxReplicas: 20
     targetCPUUtilizationPercentage: 60
