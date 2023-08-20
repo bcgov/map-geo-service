@@ -170,10 +170,11 @@
         <expirationRule minZoom="0" expiration="900" />
       </expireClientsList>
       <parameterFilters>
-        <!-- <regexParameterFilter>
+        <regexParameterFilter>
           <key>cql_filter</key>
+          <defaultValue>INCLUDE</defaultValue>
           <regex>.*</regex>
-        </regexParameterFilter> -->
+        </regexParameterFilter>
         <regexParameterFilter>
           <key>STYLES</key>
           <defaultValue></defaultValue>
