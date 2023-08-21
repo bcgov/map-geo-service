@@ -16,7 +16,8 @@ geoserver:
       memory: 100Mi
 
   image:
-    repository: artifacts.developer.gov.bc.ca/a264-docker/map-geoserver
+    repository: ghcr.io/bcgov/map-geo-service/map-geoserver
+    #repository: artifacts.developer.gov.bc.ca/a264-docker/map-geoserver
     pullPolicy: Always
     tag: dev
 
