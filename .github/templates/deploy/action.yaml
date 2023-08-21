@@ -83,6 +83,7 @@ runs:
             -f ./charts/prom-metrics-vms/values.${{ inputs.environment }}.yaml \
             $HELM_ARGS \
           prom-metrics-vms-*.tgz
+        fi
 
     - name: Post Upgrade Summary
       shell: bash
