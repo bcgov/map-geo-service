@@ -44,3 +44,4 @@ geoserver:
 
   extraLabels:
     role: geoserver
+    solution: dss-maps

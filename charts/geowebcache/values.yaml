@@ -75,3 +75,4 @@ gwc:
 
   extraLabels:
     role: geowebcache
+    solution: dss-maps
