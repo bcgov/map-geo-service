@@ -22,23 +22,23 @@ on:
         required: true
 
 jobs:
-  release-on-push:
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - id: release
-        uses: rymndhng/release-on-push-action@master
-        with:
-          bump_version_scheme: minor
-    outputs:
-      version_number: ${{ steps.release.outputs.tag_name }}
+  # release-on-push:
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #   steps:
+  #     - id: release
+  #       uses: rymndhng/release-on-push-action@master
+  #       with:
+  #         bump_version_scheme: minor
+  #   outputs:
+  #     version_number: ${{ steps.release.outputs.tag_name }}
 
   deploy-dev:
     name: deploy to dev
     runs-on: ubuntu-latest
     environment: "dev"
-    needs: release-on-push
+    #needs: release-on-push
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -59,7 +59,7 @@ jobs:
     name: deploy to prod
     runs-on: ubuntu-latest
     environment: prod
-    needs: release-on-push
+    #needs: release-on-push
     steps:
       - name: Checkout
         uses: actions/checkout@v3
