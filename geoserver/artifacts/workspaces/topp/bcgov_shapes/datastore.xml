@@ -1,0 +1,12 @@
+<dataStore>
+  <id>DataStoreInfoImpl--570ae188:124961b8d78:-7fd9</id>
+  <name>evacorders_shapefile</name>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl--570ae188:124761b8d78:-7ffd</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="namespace">http://www.openplans.org/topp</entry>
+    <entry key="url">file:data/shapefile/Evacuation_Orders_and_Alerts_-_View.shp</entry>
+  </connectionParameters>
+</dataStore>
