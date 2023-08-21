@@ -6,7 +6,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      role: geowebcache
+      solution: dss-maps
   ingress:
     - from:
         - namespaceSelector:

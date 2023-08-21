@@ -1,7 +1,6 @@
 services:
   - name: map-geo-geoserver-dev
     host: map-geoserver-dev.264e6f-dev.svc
-    path: /geoserver
     tags: [ns.dss-map-geo]
     port: 80
     protocol: http

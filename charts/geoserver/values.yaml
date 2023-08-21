@@ -9,8 +9,8 @@ geoserver:
 
   resources:
     limits:
-      cpu: 200m
-      memory: 500Mi
+      cpu: 800m
+      memory: 1Gi
     requests:
       cpu: 50m
       memory: 100Mi
