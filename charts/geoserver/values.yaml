@@ -38,11 +38,13 @@ geoserver:
     HTTP_SCHEME:
       value: https
     PROXY_BASE_URL:
-      value: https://map-geoserver.dev.api.gov.bc.ca
+      value: https://map-geoserver.dev.api.gov.bc.ca/geoserver
 
   config: []
 
   persistence:
+    catalina:
+      mountPath: /usr/local/tomcat/conf/Catalina/localhost
     geoserver-data:
       mountPath: /opt/geoserver_data
 
