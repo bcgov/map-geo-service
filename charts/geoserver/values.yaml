@@ -22,7 +22,8 @@ geoserver:
     tag: dev
 
   imagePullSecrets:
-    - name: artifactory-pull
+    - name: dev-github-read-packages-creds
+    # - name: artifactory-pull
 
   containerPort: 8080
 
