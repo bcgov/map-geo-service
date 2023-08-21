@@ -1,0 +1,26 @@
+services:
+  - name: map-geo-geoserver-dev
+    host: map-geoserver-dev.264e6f-dev.svc
+    path: /geoserver
+    tags: [ns.dss-map-geo]
+    port: 80
+    protocol: http
+    retries: 0
+    routes:
+      - name: map-geo-geoserver-dev
+        tags: [ns.dss-map-geo]
+        hosts:
+          - map-geoserver.dev.api.gov.bc.ca
+        paths:
+          - /
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+        strip_path: false
+        https_redirect_status_code: 426
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true
