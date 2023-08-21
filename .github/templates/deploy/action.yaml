@@ -74,7 +74,7 @@ runs:
           $HELM_ARGS \
          geoserver-*.tgz
 
-        if [ "prod" = "${{ inputs.environment }}" ]
+        if [ "dev" = "${{ inputs.environment }}" ]
         then
           helm dependency build charts/prom-metrics-vms
           helm package --app-version=${{ inputs.tag_name }} ./charts/prom-metrics-vms
