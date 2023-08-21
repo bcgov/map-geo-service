@@ -1,0 +1,17 @@
+<layer>
+  <name>EvacuationOrdersandAlerts</name>
+  <id>LayerInfoImpl--2ead2be8:18a1a04a112:-7aa3</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fe0</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--2ead2be8:18a1a04a112:-7aa4</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+  <dateCreated>2023-08-21 21:36:58.268 UTC</dateCreated>
+  <dateModified>2023-08-21 21:37:20.326 UTC</dateModified>
+</layer>
