@@ -59,6 +59,8 @@ geoserver:
       mountPath: /usr/local/tomcat/conf/Catalina/localhost
     geoserver-data:
       mountPath: /opt/geoserver_data
+    dotmc:
+      mountPath: /.mc
 
   nameOverride: map-geoserver
 
@@ -84,12 +86,8 @@ geoserver:
       volumeMounts:
         - name: dotmc-vol
           mountPath: /.mc
-        - name: bcsurvey-vol
-          mountPath: /bcsurvey
-
-      env:
-        MINIO_URI:
-          value: http://minio-dev:9000
+        - name: geoserver-data-vol
+          mountPath: /opt/geoserver_data
 
       command:
         - sh
