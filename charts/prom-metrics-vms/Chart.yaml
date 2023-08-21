@@ -1,6 +1,6 @@
 apiVersion: v2
-name: geowebcache
-description: A Helm chart for deploying GeoWebCache solution
+name: prom-beid-apache
+description: A Helm chart for deploying a BEID Apache scraper
 
 type: application
 
@@ -12,5 +12,5 @@ dependencies:
   - name: generic-api
     version: 0.2.8
     repository: https://bcgov.github.io/helm-charts
-    condition: gwc.enabled
-    alias: gwc
+    condition: prom.enabled
+    alias: prom

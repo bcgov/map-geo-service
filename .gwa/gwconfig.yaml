@@ -27,6 +27,9 @@ services:
     port: 443
     protocol: https
     retries: 0
+    connect_timeout: 8000
+    read_timeout: 8000
+    write_timeout: 8000
     routes:
       - name: map-geoserver-imai
         tags: [ns.dss-map-geo]

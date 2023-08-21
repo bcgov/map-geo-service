@@ -66,6 +66,24 @@ runs:
           $HELM_ARGS \
          geowebcache-*.tgz
 
+        helm dependency build charts/geoserver
+        helm package --app-version=${{ inputs.tag_name }} ./charts/geoserver
+        helm upgrade --install map-geoserver-${{ inputs.environment }} \
+          -f ./charts/geoserver/values.yaml \
+          -f ./charts/geoserver/values.${{ inputs.environment }}.yaml \
+          $HELM_ARGS \
+         geoserver-*.tgz
+
+        if [ "prod" = "${{ inputs.environment }}" ]
+        then
+          helm dependency build charts/prom-metrics-vms
+          helm package --app-version=${{ inputs.tag_name }} ./charts/prom-metrics-vms
+          helm upgrade --install map-prom-metrics-vms-${{ inputs.environment }} \
+            -f ./charts/prom-metrics-vms/values.yaml \
+            -f ./charts/prom-metrics-vms/values.${{ inputs.environment }}.yaml \
+            $HELM_ARGS \
+          prom-metrics-vms-*.tgz
+
     - name: Post Upgrade Summary
       shell: bash
       run: |

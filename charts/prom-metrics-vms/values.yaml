@@ -1,60 +1,61 @@
-replicaCount: 1
-image:
-  repository: nginx
-  tag: "1.23.2"
-  pullPolicy: IfNotPresent
-podAnnotations:
-  prometheus.io/scrape: "true"
-  prometheus.io/path: /metrics
-  prometheus.io/port: "8000"
-resources:
-  limits:
-    cpu: 40m
-    memory: 50Mi
-  requests:
-    cpu: 20m
-    memory: 20Mi
-readinessProbe:
-  httpGet:
-    path: /index.html
-    port: http
-  initialDelaySeconds: 0
-  periodSeconds: 15
-extraLabels:
-  scrape_job: beid
-config:
-  - filename: index.html
-    mountPath: /usr/share/nginx/html/index.html
-    contents: |
-      <html><body>Metrics Proxy</body></html>
-  - filename: nginx.conf
-    mountPath: /etc/nginx/nginx.conf
-    contents: |
-      worker_processes  1;
-      error_log  /tmp/error.log;
-      pid        /tmp/nginx.pid;
-      worker_rlimit_nofile 8192;
+prom:
+  replicaCount: 1
+  image:
+    repository: nginx
+    tag: "1.23.2"
+    pullPolicy: IfNotPresent
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: /metrics
+    prometheus.io/port: "8000"
+  resources:
+    limits:
+      cpu: 40m
+      memory: 50Mi
+    requests:
+      cpu: 20m
+      memory: 20Mi
+  readinessProbe:
+    httpGet:
+      path: /index.html
+      port: http
+    initialDelaySeconds: 0
+    periodSeconds: 15
+  extraLabels:
+    scrape_job: beid
+  config:
+    - filename: index.html
+      mountPath: /usr/share/nginx/html/index.html
+      contents: |
+        <html><body>Metrics Proxy</body></html>
+    - filename: nginx.conf
+      mountPath: /etc/nginx/nginx.conf
+      contents: |
+        worker_processes  1;
+        error_log  /tmp/error.log;
+        pid        /tmp/nginx.pid;
+        worker_rlimit_nofile 8192;
 
-      events {
-        worker_connections  1024;
-      }
+        events {
+          worker_connections  1024;
+        }
 
-      http {
-          client_body_temp_path /tmp/client_temp;
-          proxy_temp_path       /tmp/proxy_temp_path;
-          fastcgi_temp_path     /tmp/fastcgi_temp;
-          uwsgi_temp_path       /tmp/uwsgi_temp;
-          scgi_temp_path        /tmp/scgi_temp;
+        http {
+            client_body_temp_path /tmp/client_temp;
+            proxy_temp_path       /tmp/proxy_temp_path;
+            fastcgi_temp_path     /tmp/fastcgi_temp;
+            uwsgi_temp_path       /tmp/uwsgi_temp;
+            scgi_temp_path        /tmp/scgi_temp;
 
-          limit_req_zone $binary_remote_addr zone=mylimit:10m rate=2r/m;
+            limit_req_zone $binary_remote_addr zone=mylimit:10m rate=2r/m;
 
-          server {
-            listen       8000;
-            root         /usr/share/nginx/html;
+            server {
+              listen       8000;
+              root         /usr/share/nginx/html;
 
-            location /metrics {
-              limit_req zone=mylimit;
-              proxy_pass https://openmaps.gov.bc.ca/metrics;
+              location /metrics {
+                limit_req zone=mylimit;
+                proxy_pass https://openmaps.gov.bc.ca/metrics;
+              }
             }
-          }
-      }
+        }

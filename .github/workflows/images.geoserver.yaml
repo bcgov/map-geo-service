@@ -8,7 +8,8 @@ on:
       - .github/workflows/images.geoserver.yaml
 
 env:
-  REGISTRY: artifacts.developer.gov.bc.ca
+  REGISTRY: ghcr.io
+#  REGISTRY: artifacts.developer.gov.bc.ca
 
 jobs:
   release-on-push:
