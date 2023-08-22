@@ -1,11 +1,11 @@
 geoserver:
   enabled: true
 
-  replicaCount: 1
+  replicaCount: 2
 
   rollingUpdate:
-    maxUnavailable: 100%
-    maxSurge: 0%
+    maxUnavailable: 50%
+    maxSurge: 50%
 
   resources:
     limits:

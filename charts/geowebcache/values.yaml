@@ -3,7 +3,7 @@ gwc:
 
   useStatefulSet: true
 
-  replicaCount: 1
+  replicaCount: 5
 
   rollingUpdate:
     maxUnavailable: 100%
@@ -43,7 +43,8 @@ gwc:
     JAVA_OPTS:
       value: "-Xms1024m -Xmx2048m"
     WMS_BASE_URL:
-      value: "https://map-geoserver-imai.api.gov.bc.ca/geo/pub/ows"
+      # value: "https://map-geoserver-imai.api.gov.bc.ca/geo/pub/ows"
+      value: "https://map-geoserver.dev.api.gov.bc.ca/geoserver/wms"
     S3_ENDPOINT:
       value: "TO_BE_SET"
       secure: true
