@@ -1,6 +1,8 @@
 gwc:
   enabled: true
 
+  useStatefulSet: true
+
   replicaCount: 1
 
   rollingUpdate:
