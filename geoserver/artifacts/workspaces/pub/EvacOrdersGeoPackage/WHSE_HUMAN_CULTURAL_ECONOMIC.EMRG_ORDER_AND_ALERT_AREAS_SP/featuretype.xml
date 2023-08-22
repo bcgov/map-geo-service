@@ -1,14 +1,14 @@
 <featureType>
   <id>FeatureTypeInfoImpl--1b4413e4:18a1ee9ec6b:-7fff</id>
-  <name>EvacuationOrdersandAlerts</name>
+  <name>WHSE_HUMAN_CULTURAL_ECONOMIC.EMRG_ORDER_AND_ALERT_AREAS_SP</name>
   <nativeName>EvacuationOrdersandAlerts</nativeName>
   <namespace>
     <id>NamespaceInfoImpl--5046d7dc:18a1de477a1:-7ffe</id>
   </namespace>
-  <title>EvacuationOrdersandAlerts</title>
+  <title>Evacuation Orders and Alerts</title>
   <keywords>
-    <string>EvacuationOrdersandAlerts</string>
     <string>features</string>
+    <string>EMRG_ORDER_AND_ALERT_AREAS_SP</string>
   </keywords>
   <metadataLinks>
     <metadataLink>
