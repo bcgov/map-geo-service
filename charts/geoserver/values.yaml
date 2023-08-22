@@ -34,11 +34,11 @@ geoserver:
     INFO:
       value: BOTH
     HTTP_PROXY_NAME:
-      value: map-geoserver.dev.api.gov.bc.ca
+      value: map-geoserver-lab-api-gov-bc-ca.dev.api.gov.bc.ca
     HTTP_SCHEME:
       value: https
     PROXY_BASE_URL:
-      value: https://map-geoserver.dev.api.gov.bc.ca/geoserver
+      value: https://map-geoserver-lab-api-gov-bc-ca.dev.api.gov.bc.ca/geoserver
     S3_ENDPOINT:
       value: TO_BET_SET
       secure: true

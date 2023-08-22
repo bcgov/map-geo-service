@@ -44,19 +44,7 @@ gwc:
       value: "-Xms1024m -Xmx2048m"
     WMS_BASE_URL:
       # value: "https://map-geoserver-imai.api.gov.bc.ca/geo/pub/ows"
-      value: "https://map-geoserver.dev.api.gov.bc.ca/geoserver/wms"
-    S3_ENDPOINT:
-      value: "TO_BE_SET"
-      secure: true
-    S3_CACHE_BUCKET:
-      value: "TO_BE_SET"
-      secure: true
-    S3_ACCESS_KEY:
-      value: "TO_BE_SET"
-      secure: true
-    S3_SECRET_KEY:
-      value: "TO_BE_SET"
-      secure: true
+      value: "https://map-geoserver-lab-api-gov-bc-ca.dev.api.gov.bc.ca/geoserver/wms"
 
   config: []
 
@@ -65,12 +53,6 @@ gwc:
       mountPath: /usr/local/tomcat/conf/Catalina/localhost
     cache:
       mountPath: /geowebcache/cache
-      #claimName: map-geowebcache-shared-cache
-      # claimName: externally-created-pvc-claim
-      # size: 1Gi
-      # storageClassName: netapp-block-standard
-      # storageAccessMode: ReadWriteOnce
-
     logs:
       mountPath: /usr/local/tomcat/logs
 
