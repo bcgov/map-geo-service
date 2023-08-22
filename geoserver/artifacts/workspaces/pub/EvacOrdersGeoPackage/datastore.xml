@@ -1,0 +1,21 @@
+<dataStore>
+  <id>DataStoreInfoImpl--1b4413e4:18a1ee9ec6b:-8000</id>
+  <name>EvacOrdersGeoPackage</name>
+  <type>GeoPackage</type>
+  <enabled>true</enabled>
+  <workspace>
+    <id>WorkspaceInfoImpl--5046d7dc:18a1de477a1:-7fff</id>
+  </workspace>
+  <connectionParameters>
+    <entry key="fetch size">1000</entry>
+    <entry key="Expose primary keys">false</entry>
+    <entry key="Batch insert size">1</entry>
+    <entry key="database">file:data/geopackage/EvacOrdersAlerts.gpkg</entry>
+    <entry key="read_only">true</entry>
+    <entry key="dbtype">geopkg</entry>
+    <entry key="namespace">http://delivery.openmaps.gov.bc.ca/geo/</entry>
+  </connectionParameters>
+  <__default>false</__default>
+  <dateCreated>2023-08-22 20:22:41.515 UTC</dateCreated>
+  <disableOnConnFailure>false</disableOnConnFailure>
+</dataStore>
