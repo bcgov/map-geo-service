@@ -4,6 +4,7 @@
 
 Four Environments are configured: `dev`, `test`, `prod` and `gateway`.
 
+
 Go to https://github.com/bcgov/map-geo-services/settings/environments to configure the rules around which environments require approvals to proceed.
 
 ### Openshift
