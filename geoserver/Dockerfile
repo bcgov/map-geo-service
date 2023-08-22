@@ -65,8 +65,7 @@ RUN echo "Installing GeoServer $GS_VERSION $GS_BUILD"
 
 COPY --from=download /tmp/geoserver $CATALINA_HOME/webapps/geoserver
 
-RUN mv $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/marlin-*.jar $CATALINA_HOME/lib/marlin.jar
-#&& mkdir -p $GEOSERVER_DATA_DIR
+RUN mv $CATALINA_HOME/webapps/geoserver/WEB-INF/lib/marlin-*.jar $CATALINA_HOME/lib/marlin.jar && mkdir -p $GEOSERVER_DATA_DIR
 
 #COPY --from=original $GEOSERVER_DATA_DIR $GEOSERVER_DATA_DIR
 COPY --from=original $ORIG_GEOSERVER_LIB_DIR $GEOSERVER_LIB_DIR
