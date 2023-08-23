@@ -82,7 +82,10 @@ jobs:
 
           docker tag \
             ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver \
-            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:test \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:test
+
+          docker tag \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver \
             ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:${{ needs.release-tag.outputs.version_number }}
 
           docker push \
