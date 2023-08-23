@@ -12,3 +12,10 @@ geoserver:
       value: https
     PROXY_BASE_URL:
       value: https://map-geoserver.api.gov.bc.ca/geoserver
+
+  image:
+    pullPolicy: Always
+    tag: prod
+
+  imagePullSecrets:
+    - name: prod-github-read-packages-creds
