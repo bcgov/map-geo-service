@@ -64,7 +64,6 @@ jobs:
 
   tag-images:
     name: tag images for release
-    environment: test
     runs-on: ubuntu-latest
     needs: release-tag
     steps:
@@ -75,14 +74,14 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: "Deploy Solution"
+      - name: "Tag image"
         shell: bash
         run: |
           docker pull \
             ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:dev
 
           docker tag \
-            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:dev \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver \
             ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:${{ needs.release-tag.outputs.version_number }}
 
           docker push \
@@ -91,7 +90,6 @@ jobs:
   deploy-test:
     name: deploy to test
     runs-on: ubuntu-latest
-    environment: test
     needs: tag-images
     steps:
       - name: Checkout
