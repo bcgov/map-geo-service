@@ -42,7 +42,7 @@ geoserver:
     S3_ENDPOINT:
       value: TO_BET_SET
       secure: true
-    S3_LAYERS_BUCKET:
+    S3_BUCKET:
       value: TO_BET_SET
       secure: true
     S3_ACCESS_KEY:
@@ -95,7 +95,7 @@ geoserver:
         - -c
         - |
           mc alias set s3 $S3_ENDPOINT $S3_ACCESS_KEY $S3_SECRET_KEY
-          mc mirror --watch --preserve --overwrite --no-color --json s3/$S3_LAYERS_BUCKET/datadrop /opt/geoserver_data/data/geopackage/
+          mc mirror --watch --preserve --overwrite --no-color --json s3/$S3_BUCKET/datadrop /opt/geoserver_data/data/geopackage/
 
   initContainers:
     s3-init:
@@ -124,4 +124,4 @@ geoserver:
         - -c
         - |
           mc alias set s3 $S3_ENDPOINT $S3_ACCESS_KEY $S3_SECRET_KEY
-          mc mirror --preserve --overwrite --remove --no-color --json s3/$S3_LAYERS_BUCKET/datadrop /opt/geoserver_data/data/geopackage/
+          mc mirror --preserve --overwrite --remove --no-color --json s3/$S3_BUCKET/datadrop /opt/geoserver_data/data/geopackage/
