@@ -94,6 +94,7 @@ jobs:
   deploy-test:
     name: deploy to test
     runs-on: ubuntu-latest
+    environment: test
     needs: tag-images
     steps:
       - name: Checkout
