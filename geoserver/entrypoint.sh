@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 echo "Copying prepared files into $GEOSERVER_DATA_DIR"
 
 cp -r /prepare/* $GEOSERVER_DATA_DIR/.
