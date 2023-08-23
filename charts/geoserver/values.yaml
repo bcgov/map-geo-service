@@ -98,6 +98,6 @@ geoserver:
 
           while true
           do
-            mc mirror --preserve --overwrite --no-color --json s3/$S3_BUCKET/datadrop /opt/geoserver_data/data/geopackage/
+            echo `date` `mc mirror --preserve --overwrite --no-color --json s3/$S3_BUCKET/datadrop /opt/geoserver_data/data/geopackage/`
             sleep 15
           done
