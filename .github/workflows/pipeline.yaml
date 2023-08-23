@@ -22,18 +22,6 @@ on:
         required: true
 
 jobs:
-  # release-on-push:
-  #   runs-on: ubuntu-latest
-  #   env:
-  #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #   steps:
-  #     - id: release
-  #       uses: rymndhng/release-on-push-action@master
-  #       with:
-  #         bump_version_scheme: minor
-  #   outputs:
-  #     version_number: ${{ steps.release.outputs.tag_name }}
-
   deploy-dev:
     name: deploy to dev
     runs-on: ubuntu-latest
@@ -55,11 +43,46 @@ jobs:
           ocp_license_plate: ${{ secrets.OCP_LICENSE_PLATE }}
           tag_name: ${{needs.release-on-push.outputs.version_number}}
 
+  release-on-push:
+    environment: test
+    runs-on: ubuntu-latest
+    needs: deploy-dev
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - id: release
+        uses: rymndhng/release-on-push-action@master
+        with:
+          bump_version_scheme: minor
+    outputs:
+      version_number: ${{ steps.release.outputs.tag_name }}
+
+  deploy-test:
+    name: deploy to test
+    runs-on: ubuntu-latest
+    environment: test
+    needs: release-on-push
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+
+      - name: Deploy to Test
+        uses: "./.github/templates/deploy"
+        with:
+          openshift_server: ${{ secrets.OPENSHIFT_SERVER }}
+          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+          environment: test
+          env_vars: ${{ secrets.CONFIG }}
+          ocp_license_plate: ${{ secrets.OCP_LICENSE_PLATE }}
+          tag_name: ${{needs.release-on-push.outputs.version_number}}
+
   deploy-prod:
     name: deploy to prod
     runs-on: ubuntu-latest
     environment: prod
-    #needs: release-on-push
+    needs: release-on-push
     steps:
       - name: Checkout
         uses: actions/checkout@v3
