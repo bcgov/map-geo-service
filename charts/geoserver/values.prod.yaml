@@ -1,1 +1,14 @@
-geoserver: {}
+geoserver:
+  replicaCount: 2
+
+  rollingUpdate:
+    maxUnavailable: 50%
+    maxSurge: 50%
+
+  env:
+    HTTP_PROXY_NAME:
+      value: map-geoserver.api.gov.bc.ca
+    HTTP_SCHEME:
+      value: https
+    PROXY_BASE_URL:
+      value: https://map-geoserver.api.gov.bc.ca/geoserver

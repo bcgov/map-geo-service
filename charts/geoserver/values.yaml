@@ -1,11 +1,11 @@
 geoserver:
   enabled: true
 
-  replicaCount: 2
+  replicaCount: 1
 
   rollingUpdate:
-    maxUnavailable: 50%
-    maxSurge: 50%
+    maxUnavailable: 0%
+    maxSurge: 100%
 
   resources:
     limits:
@@ -31,8 +31,6 @@ geoserver:
     port: 80
 
   env:
-    INFO:
-      value: BOTH
     HTTP_PROXY_NAME:
       value: map-geoserver-lab-api-gov-bc-ca.dev.api.gov.bc.ca
     HTTP_SCHEME:
