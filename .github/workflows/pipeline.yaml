@@ -21,6 +21,10 @@ on:
       CONFIG:
         required: true
 
+env:
+  REGISTRY: ghcr.io
+#  REGISTRY: artifacts.developer.gov.bc.ca
+
 jobs:
   deploy-dev:
     name: deploy to dev
@@ -52,17 +56,37 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - id: release
-        uses: rymndhng/release-tag-action@master
+        uses: rymndhng/release-on-push-action@v0.28.0
         with:
           bump_version_scheme: minor
     outputs:
       version_number: ${{ steps.release.outputs.tag_name }}
 
+  tag-images:
+    name: tag images for release
+    environment: test
+    runs-on: ubuntu-latest
+    needs: release-tag
+    steps:
+      - name: Login to Artifactory
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: "Deploy Solution"
+        shell: bash
+        run: |
+          docker tag \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:dev \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:${{ needs.release-tag.outputs.version_number }}
+
   deploy-test:
     name: deploy to test
     runs-on: ubuntu-latest
     environment: test
-    needs: release-tag
+    needs: tag-images
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -83,7 +107,7 @@ jobs:
     name: deploy to prod
     runs-on: ubuntu-latest
     environment: prod
-    needs: release-tag
+    needs: tag-images
     steps:
       - name: Checkout
         uses: actions/checkout@v3
