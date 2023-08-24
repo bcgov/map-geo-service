@@ -1,5 +1,5 @@
 geoserver:
-  replicaCount: 2
+  replicaCount: 3
 
   rollingUpdate:
     maxUnavailable: 0%

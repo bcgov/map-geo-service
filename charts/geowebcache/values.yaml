@@ -13,6 +13,15 @@ gwc:
   #   maxUnavailable: 0%
   #   maxSurge: 100%
 
+  livenessProbe:
+    httpGet:
+      path: /gwc
+      port: http
+    initialDelaySeconds: 60
+    periodSeconds: 15
+    timeoutSeconds: 5
+    failureThreshold: 3
+
   readinessProbe:
     httpGet:
       path: /gwc

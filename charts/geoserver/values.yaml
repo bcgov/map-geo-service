@@ -18,7 +18,7 @@ geoserver:
   resources:
     limits:
       cpu: 800m
-      memory: 1Gi
+      memory: 2.5Gi
     requests:
       cpu: 50m
       memory: 100Mi
@@ -41,6 +41,8 @@ geoserver:
   env:
     TZ:
       value: "America/Vancouver"
+    JAVA_OPTS:
+      value: "-Xms1024m -Xmx2048m"
     HTTP_PROXY_NAME:
       value: map-geoserver-lab-api-gov-bc-ca.dev.api.gov.bc.ca
     HTTP_SCHEME:
