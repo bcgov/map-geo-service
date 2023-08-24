@@ -21,7 +21,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v3
         with:
-          images: ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver
+          images: ${{ env.REGISTRY }}/${{ secrets.REGISTRY_REPO_NAME }}/map-geoserver
 
       - name: Set DEPLOY_ID which will deploy a custom deploy to 'dev' environment
         run: |
@@ -48,7 +48,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver
+            ${{ env.REGISTRY }}/${{ secrets.REGISTRY_REPO_NAME }}/map-geoserver
           tags: |
             type=schedule
             type=ref,event=branch

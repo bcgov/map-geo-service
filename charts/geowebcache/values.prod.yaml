@@ -1,5 +1,5 @@
 gwc:
-  replicaCount: 15
+  replicaCount: 13
 
   useStatefulSet: false
 
@@ -10,7 +10,7 @@ gwc:
   autoscaling:
     enabled: false
     minReplicas: 5
-    maxReplicas: 15
+    maxReplicas: 13
     targetCPUUtilizationPercentage: 60
 
   imagePullSecrets:
