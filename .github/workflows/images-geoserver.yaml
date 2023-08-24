@@ -12,7 +12,7 @@ env:
 #  REGISTRY: artifacts.developer.gov.bc.ca
 
 jobs:
-  release-on-push:
+  build-image:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

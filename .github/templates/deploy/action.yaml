@@ -71,6 +71,7 @@ runs:
         helm upgrade --install map-geoserver-${{ inputs.environment }} \
           -f ./charts/geoserver/values.yaml \
           -f ./charts/geoserver/values.${{ inputs.environment }}.yaml \
+          --set geoserver.image.tag=${{ inputs.tag_name }} \
           $HELM_ARGS \
          geoserver-*.tgz
 

@@ -31,6 +31,8 @@ geoserver:
     port: 80
 
   env:
+    TZ:
+      value: "America/Vancouver"
     HTTP_PROXY_NAME:
       value: map-geoserver-lab-api-gov-bc-ca.dev.api.gov.bc.ca
     HTTP_SCHEME:

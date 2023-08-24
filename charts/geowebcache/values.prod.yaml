@@ -1,9 +1,10 @@
 gwc:
   replicaCount: 20
 
-  rollingUpdate:
-    maxUnavailable: 0
-    maxSurge: 1
+  # NOT RELEVANT WHEN useStatefulSet=true
+  # rollingUpdate:
+  #   maxUnavailable: 0
+  #   maxSurge: 1
 
   autoscaling:
     enabled: false
