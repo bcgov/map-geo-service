@@ -45,7 +45,8 @@ jobs:
           environment: dev
           env_vars: ${{ secrets.CONFIG }}
           ocp_license_plate: ${{ secrets.OCP_LICENSE_PLATE }}
-          tag_name: ${{needs.release-tag.outputs.version_number}}
+          tag_name: ""
+          image_name: dev
 
   release-tag:
     name: create release tag
@@ -116,7 +117,8 @@ jobs:
           environment: test
           env_vars: ${{ secrets.CONFIG }}
           ocp_license_plate: ${{ secrets.OCP_LICENSE_PLATE }}
-          tag_name: ${{needs.release-tag.outputs.version_number}}
+          tag_name: ${{needs.release-tag.outputs.tag_name}}
+          image_name: ${{needs.release-tag.outputs.version_number}}
 
   deploy-prod:
     name: deploy to prod
@@ -137,4 +139,5 @@ jobs:
           environment: prod
           env_vars: ${{ secrets.CONFIG }}
           ocp_license_plate: ${{ secrets.OCP_LICENSE_PLATE }}
-          tag_name: ${{needs.release-tag.outputs.version_number}}
+          tag_name: ${{needs.release-tag.outputs.tag_name}}
+          image_name: ${{needs.release-tag.outputs.version_number}}

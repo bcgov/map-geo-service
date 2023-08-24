@@ -14,6 +14,8 @@ inputs:
     required: true
   tag_name:
     required: true
+  image_name:
+    required: true
 
 runs:
   using: "composite"
@@ -63,7 +65,7 @@ runs:
         helm upgrade --install map-geowebcache-${{ inputs.environment }} \
           -f ./charts/geowebcache/values.yaml \
           -f ./charts/geowebcache/values.${{ inputs.environment }}.yaml \
-          --set gwc.image.tag=${{ inputs.tag_name }} \
+          --set gwc.image.tag=${{ inputs.image_name }} \
           $HELM_ARGS \
          geowebcache-*.tgz
 
@@ -72,7 +74,7 @@ runs:
         helm upgrade --install map-geoserver-${{ inputs.environment }} \
           -f ./charts/geoserver/values.yaml \
           -f ./charts/geoserver/values.${{ inputs.environment }}.yaml \
-          --set geoserver.image.tag=${{ inputs.tag_name }} \
+          --set geoserver.image.tag=${{ inputs.image_name }} \
           $HELM_ARGS \
          geoserver-*.tgz
 
