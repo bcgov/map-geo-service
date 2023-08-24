@@ -1,3 +1,5 @@
 gwc:
+  replicaCount: 2
+
   imagePullSecrets:
     - name: test-github-read-packages-creds

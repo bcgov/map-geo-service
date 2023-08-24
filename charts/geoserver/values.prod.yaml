@@ -14,8 +14,8 @@ geoserver:
       value: https://map-geoserver.api.gov.bc.ca/geoserver
 
   image:
-    pullPolicy: Always
-    tag: prod
+    pullPolicy: IfNotPresent
+    tag: TO_BE_SET
 
   imagePullSecrets:
     - name: prod-github-read-packages-creds

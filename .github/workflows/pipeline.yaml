@@ -80,14 +80,22 @@ jobs:
           docker pull \
             ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:dev
 
-          export TAG=`docker inspect --format='{{index .RepoDigests 0}}' ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:dev`
-
           docker image tag \
-            $TAG \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:dev \
             ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:${{ needs.release-tag.outputs.version_number }}
 
           docker push \
             ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geoserver:${{ needs.release-tag.outputs.version_number }}
+
+          docker pull \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geowebcache:dev
+
+          docker image tag \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geowebcache:dev \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geowebcache:${{ needs.release-tag.outputs.version_number }}
+
+          docker push \
+            ${{ env.REGISTRY }}/${{ secrets.ARTIFACTORY_REPO_NAME }}/map-geowebcache:${{ needs.release-tag.outputs.version_number }}
 
   deploy-test:
     name: deploy to test

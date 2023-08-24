@@ -1,5 +1,5 @@
 gwc:
-  replicaCount: 20
+  replicaCount: 12
 
   # NOT RELEVANT WHEN useStatefulSet=true
   # rollingUpdate:
@@ -11,6 +11,11 @@ gwc:
     minReplicas: 5
     maxReplicas: 20
     targetCPUUtilizationPercentage: 60
+
+  env:
+    WMS_BASE_URL:
+      value: "https://map-geoserver-imai.api.gov.bc.ca/geo/pub/ows"
+      # value: "https://map-geoserver.api.gov.bc.ca/geoserver/wms"
 
   imagePullSecrets:
     - name: prod-github-read-packages-creds
