@@ -1,5 +1,5 @@
 gwc:
-  replicaCount: 13
+  replicaCount: 8
 
   useStatefulSet: true
 
