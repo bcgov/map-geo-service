@@ -64,8 +64,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64
-          context: geoserver
-          file: geoserver/Dockerfile
+          context: packages/geoserver
+          file: packages/geoserver/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true

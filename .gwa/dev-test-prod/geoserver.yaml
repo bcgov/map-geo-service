@@ -1,0 +1,50 @@
+services:
+  - name: map-geo-geoserver-test
+    host: map-geoserver-test.264e6f-test.svc
+    tags: [ns.dss-map-geo]
+    port: 80
+    protocol: http
+    retries: 0
+    routes:
+      - name: map-geo-geoserver-test
+        tags: [ns.dss-map-geo]
+        hosts:
+          - map-geoserver.test.api.gov.bc.ca
+        paths:
+          - /
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+        strip_path: false
+        https_redirect_status_code: 426
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true
+
+  - name: map-geo-geoserver-prod
+    host: map-geoserver-prod.264e6f-prod.svc
+    tags: [ns.dss-map-geo]
+    port: 80
+    protocol: http
+    retries: 0
+    routes:
+      - name: map-geo-geoserver-prod
+        tags: [ns.dss-map-geo]
+        hosts:
+          - map-geoserver.api.gov.bc.ca
+        paths:
+          - /
+        methods:
+          - GET
+          - POST
+          - PUT
+          - DELETE
+          - OPTIONS
+        strip_path: false
+        https_redirect_status_code: 426
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true

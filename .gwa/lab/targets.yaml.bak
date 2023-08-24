@@ -1,0 +1,110 @@
+upstreams:
+  - name: maptest.lb.v1
+    tags:
+      - ns.map-geo-design
+    algorithm: least-connections
+    hash_on_cookie_path: "/"
+    hash_on: none
+    hash_fallback: none
+    slots: 10000
+    healthchecks:
+      threshold: 0
+      active:
+        unhealthy:
+          http_statuses:
+            - 429
+            - 404
+            - 500
+            - 501
+            - 502
+            - 503
+            - 504
+            - 505
+          tcp_failures: 0
+          timeouts: 0
+          http_failures: 0
+          interval: 0
+        type: http
+        http_path: "/"
+        timeout: 1
+        healthy:
+          successes: 0
+          interval: 0
+          http_statuses:
+            - 200
+            - 302
+        https_verify_certificate: true
+        concurrency: 10
+      passive:
+        unhealthy:
+          http_failures: 0
+          http_statuses:
+            - 429
+            - 500
+            - 503
+          tcp_failures: 0
+          timeouts: 0
+        healthy:
+          http_statuses:
+            - 200
+            - 201
+            - 202
+            - 203
+            - 204
+            - 205
+            - 206
+            - 207
+            - 208
+            - 226
+            - 300
+            - 301
+            - 302
+            - 303
+            - 304
+            - 305
+            - 306
+            - 307
+            - 308
+          successes: 0
+        type: http
+    targets:
+      - tags:
+          - ns.map-geo-design
+        target: map-test-0.map-test.264e6f-dev.svc:3000
+        weight: 100
+      - tags:
+          - ns.map-geo-design
+        target: map-test-1.map-test.264e6f-dev.svc:3000
+        weight: 100
+      - tags:
+          - ns.map-geo-design
+        target: map-test-2.map-test.264e6f-dev.svc:3000
+        weight: 100
+      - tags:
+          - ns.map-geo-design
+        target: map-test-3.map-test.264e6f-dev.svc:3000
+        weight: 100
+      - tags:
+          - ns.map-geo-design
+        target: map-test-4.map-test.264e6f-dev.svc:3000
+        weight: 100
+      - tags:
+          - ns.map-geo-design
+        target: map-test-5.map-test.264e6f-dev.svc:3000
+        weight: 100
+      - tags:
+          - ns.map-geo-design
+        target: map-test-6.map-test.264e6f-dev.svc:3000
+        weight: 100
+      - tags:
+          - ns.map-geo-design
+        target: map-test-7.map-test.264e6f-dev.svc:3000
+        weight: 100
+      - tags:
+          - ns.map-geo-design
+        target: map-test-8.map-test.264e6f-dev.svc:3000
+        weight: 100
+      - tags:
+          - ns.map-geo-design
+        target: map-test-9.map-test.264e6f-dev.svc:3000
+        weight: 100

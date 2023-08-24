@@ -1,0 +1,17 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-traffic-from-kong-to-test
+  namespace: 264e6f-test
+spec:
+  podSelector:
+    matchLabels:
+      solution: dss-maps
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              environment: prod
+              name: 264e6f
+  policyTypes:
+    - Ingress

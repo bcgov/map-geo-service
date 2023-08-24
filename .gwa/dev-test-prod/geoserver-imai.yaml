@@ -1,0 +1,24 @@
+services:
+  - name: map-geoserver-imai
+    host: openmaps.gov.bc.ca
+    tags: [ns.dss-map-geo]
+    port: 443
+    protocol: https
+    retries: 0
+    connect_timeout: 8000
+    read_timeout: 8000
+    write_timeout: 8000
+    routes:
+      - name: map-geoserver-imai
+        tags: [ns.dss-map-geo]
+        hosts:
+          - map-geoserver-imai.api.gov.bc.ca
+        paths:
+          - /
+        methods:
+          - GET
+        strip_path: false
+        https_redirect_status_code: 426
+        path_handling: v0
+        request_buffering: true
+        response_buffering: true

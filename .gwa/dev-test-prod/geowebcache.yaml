@@ -1,44 +1,48 @@
 services:
-  - name: map-geo-geowebcache-dev
-    host: map-geowebcache-dev.264e6f-dev.svc
+  - name: map-geo-geowebcache-test
+    host: test.gwc.map.lb.v1
     tags: [ns.dss-map-geo]
     port: 80
     protocol: http
     retries: 0
+    connect_timeout: 5000
+    read_timeout: 5000
+    write_timeout: 5000
+    plugins:
+      - name: response-transformer
+        tags: [ns.dss-map-geo]
+        config:
+          add:
+            headers:
+              - "X-Geo-Cache-Source: ocp"
+      - name: pre-function
+        tags: [ns.dss-map-geo]
+        config:
+          access:
+            - "if kong.request.get_query_arg(\"layers\") ~= \"pub:WHSE_HUMAN_CULTURAL_ECONOMIC.EMRG_ORDER_AND_ALERT_AREAS_SP\" then\n    kong.service.request.set_header(\"x-event\", \"to-beid\")\n    kong.service.set_target(\"142.34.140.41\", 443)\n    kong.service.request.set_scheme(\"https\")\nelse\n    kong.service.request.set_header(\"x-event\", \"to-ocp\")\nend"
+      - name: rate-limiting
+        tags: [ns.dss-map-geo]
+        config:
+          fault_tolerant: true
+          hide_client_headers: false
+          policy: redis
+          limit_by: service
+          minute: null
+          second: 300
+          hour: null
+          day: null
+          month: null
+          year: null
     routes:
-      - name: map-geo-geowebcache-dev
+      - name: map-geo-geowebcache-test
         tags: [ns.dss-map-geo]
         hosts:
-          - map-gwc.dev.api.gov.bc.ca
+          - map-gwc.test.api.gov.bc.ca
         paths:
           - /
         methods:
           - GET
           - POST
-        strip_path: false
-        https_redirect_status_code: 426
-        path_handling: v0
-        request_buffering: true
-        response_buffering: true
-
-  - name: map-geoserver-imai
-    host: openmaps.gov.bc.ca
-    tags: [ns.dss-map-geo]
-    port: 443
-    protocol: https
-    retries: 0
-    connect_timeout: 8000
-    read_timeout: 8000
-    write_timeout: 8000
-    routes:
-      - name: map-geoserver-imai
-        tags: [ns.dss-map-geo]
-        hosts:
-          - map-geoserver-imai.api.gov.bc.ca
-        paths:
-          - /
-        methods:
-          - GET
         strip_path: false
         https_redirect_status_code: 426
         path_handling: v0

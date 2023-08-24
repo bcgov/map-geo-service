@@ -1,15 +1,16 @@
 services:
-  - name: map-geo-geoserver-dev
-    host: map-geoserver-dev.264e6f-dev.svc
-    tags: [ns.dss-map-geo]
-    port: 80
-    protocol: http
+  - name: map-geo-geowebcache-lab
+    host: maptest.lb.v1
+    #host: map-test.264e6f-dev.svc
+    # port: 80
+    # protocol: http
+    tags: [ns.map-geo-design]
     retries: 0
     routes:
-      - name: map-geo-geoserver-dev
-        tags: [ns.dss-map-geo]
+      - name: map-geo-geowebcache-lab
+        tags: [ns.map-geo-design]
         hosts:
-          - map-geoserver.dev.api.gov.bc.ca
+          - map-geo-lab.api.gov.bc.ca
         paths:
           - /
         methods:
