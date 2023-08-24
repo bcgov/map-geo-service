@@ -1,7 +1,7 @@
 services:
   - name: map-geo-geowebcache-prod
-    #host: prod.gwc.map.lb.v1
-    host: map-geowebcache-prod.264e6f-prod.svc
+    host: prod.gwc.map.lb.v1
+    #host: map-geowebcache-prod.264e6f-prod.svc
     tags: [ns.dss-map-geo]
     port: 80
     protocol: http
