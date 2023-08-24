@@ -3,9 +3,6 @@ gwc:
 
   useStatefulSet: true
 
-  imagePullSecrets:
-    - name: prod-github-read-packages-creds
-
   env:
     WMS_BASE_URL:
       value: "https://map-geoserver.dev.api.gov.bc.ca/geoserver/wms"
