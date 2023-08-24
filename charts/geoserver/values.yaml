@@ -7,6 +7,14 @@ geoserver:
     maxUnavailable: 0%
     maxSurge: 100%
 
+  readinessProbe:
+    httpGet:
+      path: /geoserver
+      port: http
+    initialDelaySeconds: 15
+    periodSeconds: 15
+    timeoutSeconds: 5
+
   resources:
     limits:
       cpu: 800m
