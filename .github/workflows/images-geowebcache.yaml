@@ -4,7 +4,7 @@ on:
   push:
     branches: [dev, image/*]
     paths:
-      - geowebcache/**
+      - packages/geowebcache/**
       - .github/workflows/images-geowebcache.yaml
 
 env:

@@ -4,7 +4,7 @@ on:
   push:
     branches: [dev, image/*]
     paths:
-      - geoserver/**
+      - packages/geoserver/**
       - .github/workflows/images-geoserver.yaml
 
 env:
