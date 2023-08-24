@@ -2,7 +2,7 @@ geoserver:
   replicaCount: 2
 
   rollingUpdate:
-    maxUnavailable: 50%
+    maxUnavailable: 0%
     maxSurge: 50%
 
   env:
