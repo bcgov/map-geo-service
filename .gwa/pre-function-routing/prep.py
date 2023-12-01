@@ -1,6 +1,8 @@
 import json
 script = """
 
+# NOTE: NEED TO BE MORE SOPHISTICATED AND LOOK AT PATH AS WELL!
+
 if kong.request.get_query_arg("layers") ~= "pub:WHSE_HUMAN_CULTURAL_ECONOMIC.EMRG_ORDER_AND_ALERT_AREAS_SP" then
     kong.service.request.set_header("x-event", "to-beid")
     kong.service.set_target("142.34.140.41", 443)

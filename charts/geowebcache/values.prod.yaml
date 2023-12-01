@@ -1,11 +1,7 @@
 gwc:
-  replicaCount: 8
+  replicaCount: 12
 
   useStatefulSet: true
-
-  # rollingUpdate:
-  #   maxUnavailable: 10%
-  #   maxSurge: 10%
 
   autoscaling:
     enabled: false
